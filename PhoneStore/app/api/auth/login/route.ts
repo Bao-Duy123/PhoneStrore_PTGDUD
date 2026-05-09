@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { findUserByPhone } from '@/lib/data/users';
+import { users, createUser, findUserByPhone } from '@/lib/data/users';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'phonestore-secret-key-2024';
+const JWT_EXPIRES_IN = '7d';
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,16 +39,27 @@ export async function POST(request: NextRequest) {
     const token = jwt.sign(
       { userId: user.id, role: user.role },
       JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: JWT_EXPIRES_IN }
     );
 
     const { password: _, ...userWithoutPassword } = user;
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       user: userWithoutPassword,
       token,
     });
+
+    // Set cookie TRƯỚC khi return
+    response.cookies.set('token', token, {
+      httpOnly: false, // Cho phép JavaScript đọc để debug, production nên true
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
+    });
+
+    return response;
   } catch (error) {
     console.error('Login error:', error);
     return NextResponse.json(

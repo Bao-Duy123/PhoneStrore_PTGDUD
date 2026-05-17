@@ -1,15 +1,15 @@
 # PhoneStrore_PTGDUD
 
-====================================================================
+======================================================
 PHONESTORE - HỆ THỐNG E-COMMERCE BÁN LẺ ĐIỆN THOẠI DI ĐỘNG
-====================================================================
+======================================================
 
 1. GIỚI THIỆU CHUNG (INTRODUCTION)
 PhoneStore là một ứng dụng thương mại điện tử (E-commerce) hoàn chỉnh chuyên biệt cho lĩnh vực bán lẻ điện thoại di động tại Việt Nam. Dự án được phát triển nhằm giải quyết bài toán tối ưu hóa trải nghiệm mua sắm trực tuyến của người dùng (từ việc tìm kiếm, lọc sản phẩm thông minh đến quy trình thanh toán nhanh chóng) đồng thời cung cấp một hệ thống quản trị (Admin Dashboard) mạnh mẽ giúp doanh nghiệp dễ dàng kiểm soát kho hàng, đơn hàng và tệp khách hàng.
 
 Dự án được tổ chức mã nguồn theo mô hình chuẩn hóa, phân tách rõ ràng giữa các tầng Giao diện (UI Elements), Quản lý trạng thái (State Management) và Xử lý nghiệp vụ (Services Layer), sẵn sàng tích hợp với hệ thống Backend thực tế.
 
---------------------------------------------------------------------
+------------------------------------------------------
 
 2. CÔNG NGHỆ SỬ DỤNG (TECH STACK)
 Hệ thống được xây dựng trên nền tảng công nghệ hiện đại, tối ưu tốc độ phản hồi và kiểm soát chặt chẽ kiểu dữ liệu:
@@ -23,7 +23,7 @@ Hệ thống được xây dựng trên nền tảng công nghệ hiện đại,
 - Styling: Tailwind CSS (Phiên bản 3.x) - Framework tiện ích CSS giúp tùy biến giao diện nhanh và hỗ trợ Responsive.
 
 
---------------------------------------------------------------------
+------------------------------------------------------
 
 3. TÍNH NĂNG CỐT LÕI (CORE FEATURES)
 
@@ -39,14 +39,10 @@ Phân hệ Quản trị viên (Admin Module):
 - Quản lý Đơn hàng (CRUD): Theo dõi danh sách đơn hàng toàn hệ thống, xem chi tiết hóa đơn và cập nhật trạng thái đơn hàng (Chờ xử lý -> Đang giao -> Đã giao -> Đã hủy).
 - Quản lý Người dùng (CRUD): Tra cứu thông tin người dùng, khóa/mở khóa tài khoản thành viên và giám sát quyền truy cập hệ thống.
 
---------------------------------------------------------------------
+------------------------------------------------------
 
 4. HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG LOCAL (LOCAL SETUP)
 
-Các yêu cầu tiên quyết:
-Trước khi khởi chạy dự án, hãy đảm bảo máy tính của bạn đã cài đặt các môi trường sau:
-- Node.js: Phiên bản 18.x hoặc cao hơn (Khuyến nghị bản LTS).
-- Trình quản lý gói: NPM (đi kèm Node.js) hoặc Yarn / PNPM.
 
 Các bước triển khai dòng lệnh:
 
@@ -57,16 +53,9 @@ cd PhoneStore
 Bước 2: Cài đặt các gói thư viện phụ thuộc
 npm install
 
-Bước 3: Cấu hình biến môi trường
-Dự án quản lý các cấu hình thông qua tệp biến môi trường. Hãy sao chép tệp cấu hình mẫu thành file môi trường chạy cục bộ bằng lệnh:
-cp .env.example .env.local
 
-Mở tệp .env.local vừa tạo và điền hoặc chỉnh sửa các giá trị key tương ứng của bạn:
-VITE_API_BASE_URL=https://api.phonestorebasis.com/v1
-VITE_MOCK_API_DELAY=500
-VITE_STORAGE_SECRET_KEY=your_secret_key_here
 
-Bước 4: Khởi chạy dự án trên môi trường local
+Bước 3: Khởi chạy dự án trên môi trường local
 npm run dev
 
 Sau khi chạy lệnh thành công, ứng dụng sẽ khởi chạy tại địa chỉ mặc định: http://localhost:5173
